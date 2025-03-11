@@ -1,0 +1,11 @@
+<h1>Refurbished Bikes Marketplace</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+  <% @bikes.each do |bike| %>
+    <div class="p-4 border rounded-lg shadow-lg bg-white">
+      <h2 class="text-xl font-bold"><%= bike.brand %> (<%= bike.year %>)</h2>
+      <p class="text-gray-600"><strong>Type:</strong> <%= bike.type %></p>
+      <p class="text-gray-600"><strong>Color:</strong> <%= bike.color %></p>
+    </div>
+  <% end %>
+</div>
