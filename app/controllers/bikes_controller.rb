@@ -1,6 +1,12 @@
 class BikesController < ApplicationController
+
   # before_action :set_bikes, only: []
   def home
+  end
+  
+  def index
+
+    @bikes = Bike.all
   end
 
   def show
@@ -14,6 +20,7 @@ class BikesController < ApplicationController
   end
 
   def set_bikes
-    @bikes = Bike.all
   end
+  
+  
 end
