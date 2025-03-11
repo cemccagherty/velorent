@@ -1,5 +1,5 @@
-class PagesController < ApplicationController
-  # before_action :set_bikes, only: [:show, :create]
+class BikesController < ApplicationController
+  # before_action :set_bikes, only: []
   def home
   end
 
