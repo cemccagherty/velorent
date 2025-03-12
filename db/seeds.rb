@@ -11,24 +11,33 @@ Order.destroy_all
 Bike.destroy_all
 User.destroy_all
 puts "User created"
-User.create!(
+user = User.create!(
   email: "user@test.com",
   password: "123456"
 )
-puts "crating bikes"
-5.times do
-  puts "single bike created"
+
+bike_brands = ["Trek", "Giant", "Cannondale", "Specialized", "Bianchi", "Merida", "Scott", "Canyon"]
+bike_types = ["Road", "Mountain", "Hybrid", "Electric", "BMX", "Gravel", "Folding"]
+bike_colors = ["Red", "Blue", "Black", "Green", "White", "Yellow", "Orange", "Purple"]
+
+puts "creating bikes"
+
+10.times do
   Bike.create!(
-    brand: "thing",
-    year: 2000,
-    color: "green",
-    user: User.first
+    brand: bike_brands.sample,
+    bike_type: bike_types.sample,
+    year: rand(2015..2024),
+    color: bike_colors.sample,
+    user: user
   )
 end
-puts "creating order"
-2.times do
+
+puts "Creating orders"
+5.times do
   Order.create!(
-    user: User.first,
-    bike: Bike.first
+    user: user,
+    bike: Bike.all.sample,
+    status: [true, false].sample,
+    rental_date: Date.today + rand(1..30).days
   )
 end
