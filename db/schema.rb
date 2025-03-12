@@ -19,9 +19,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_114013) do
     t.string "brand"
     t.integer "year"
     t.string "color"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
