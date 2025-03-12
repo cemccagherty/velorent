@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: "bikes#index"
   # get "/contact", to: "pages#contact"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   # resources :user
-  resources :bikes do
+  resources :bikes, except: [:index] do
     resources :orders, only: [:create]
   end
   resources :orders
