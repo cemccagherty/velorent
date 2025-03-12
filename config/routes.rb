@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   # resources :user
+  resources :my_bikes, only: [:index]
+
   resources :bikes, except: [:index] do
     resources :orders, only: [:create]
   end
