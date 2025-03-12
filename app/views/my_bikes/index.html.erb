@@ -17,11 +17,26 @@
                 <li><p>Booked by: <%= order.user.email %></p> <p>For rental on: <%= order.rental_date %></p></li>
               <% end %>
             </ul>
-
-
           </div>
         </div>
       </div>
     <% end %>
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p><strong>Add a bike</strong></p>
+            <%= simple_form_for @bike do |f| %>
+              <%= f.input :bike_type %>
+              <%= f.input :brand %>
+              <%= f.input :year %>
+              <%= f.input :color %>
+              <%= f.submit "Add bike" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
   </div>
+
+
 </div>
