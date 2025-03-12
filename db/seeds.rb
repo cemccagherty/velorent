@@ -41,3 +41,30 @@ puts "Creating orders"
     rental_date: Date.today + rand(1..30).days
   )
 end
+
+#    ---- second user ----
+
+user_two = User.create!(
+  email: "second_user@test.com",
+  password: "keklmao"
+)
+
+10.times do
+  Bike.create!(
+    brand: bike_brands.sample,
+    bike_type: bike_types.sample,
+    year: rand(2015..2024),
+    color: bike_colors.sample,
+    user: user_two
+  )
+end
+
+
+5.times do
+  Order.create!(
+    user: user_two,
+    bike: Bike.all.sample,
+    status: [true, false].sample,
+    rental_date: Date.today + rand(1..30).days
+  )
+end
