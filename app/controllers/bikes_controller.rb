@@ -3,14 +3,14 @@ class BikesController < ApplicationController
   # before_action :set_bikes, only: []
   def home
   end
-  
-  def index
 
+  def index
     @bikes = Bike.all
   end
 
   def show
-    @bike = Bike.find(params(:id))
+    @bike = Bike.find(params[:id])
+    @order = Order.new
   end
 
   private
@@ -21,6 +21,5 @@ class BikesController < ApplicationController
 
   def set_bikes
   end
-  
-  
+
 end
