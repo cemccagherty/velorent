@@ -1,4 +1,12 @@
 class OrdersController < ApplicationController
+  # before_action :set_user, only: [:index]
+  def index
+    @orders = Order.where(user: current_user)
+  end
+
+  def show
+    
+  end
 
   def create
     @bike = Bike.find(params[:bike_id])
@@ -17,5 +25,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:bike_id, :user_id, :rental_date)
+  end
+
+  def set_user
+    @user = current_user
   end
 end
