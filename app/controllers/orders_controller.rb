@@ -4,8 +4,9 @@ class OrdersController < ApplicationController
     @orders = Order.where(user: current_user)
   end
 
+  
   def show
-    
+
   end
 
   def create
