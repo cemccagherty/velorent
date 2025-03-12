@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
-  # before_action :set_user, only: [:index]
   def index
     @orders = Order.where(user: current_user)
   end
 
-  
+
   def show
 
   end
@@ -22,13 +21,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path, status: :see_other
+  end
+
   private
 
   def order_params
     params.require(:order).permit(:rental_date)
-  end
-
-  def set_user
-    @user = current_user
   end
 end
