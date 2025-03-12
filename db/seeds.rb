@@ -8,22 +8,23 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Create stores if they don't exist
-stores = [
-  { name: 'Downtown Store', email: 'downtown@example.com', primary_contact: 'John Smith' },
-  { name: 'Uptown Store', email: 'uptown@example.com', primary_contact: 'Jane Doe' }
-].each do |store_attrs|
-  Store.find_or_create_by!(name: store_attrs[:name]) do |store|
-    store.assign_attributes(store_attrs)
-  end
+User.create!(
+  email: "user@test.com",
+  password: "123456"
+)
+
+5.times do
+  Bike.create!(
+    brand: "thing",
+    year: 2000,
+    color: "green",
+    user: User.first
+  )
 end
 
-# Create bike types if they don't exist
-['Mountain', 'Road', 'Hybrid', 'City'].each do |type_name|
-  BikeType.find_or_create_by!(name: type_name)
-end
-
-# Create bike statuses if they don't exist
-['Available', 'In Repair', 'Sold'].each do |status|
-  BikeStatus.find_or_create_by!(name: status)
+2.times do
+  Order.create!(
+    user: User.first,
+    bike: Bike.first
+  )
 end

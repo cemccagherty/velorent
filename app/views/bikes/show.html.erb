@@ -2,3 +2,8 @@
 <%= @bike.brand %>
 <%= @bike.year %>
 <%= @bike.color %>
+
+<%= simple_form_for [@bike, @order] do |f| %>
+  <%= f.input :rental_date %>
+  <%= f.submit "Buy now!" %>
+<% end %>
