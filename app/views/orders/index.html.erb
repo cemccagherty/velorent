@@ -4,12 +4,22 @@
   <% @orders.each do |order| %>
     <div class="p-4 border rounded-lg shadow-lg bg-white m-2">
       <h2 class="text-xl font-bold"><%= link_to order.rental_date, bike_path(order.bike) %></h2>
-      <p class="text-gray-600"><%= order.bike.brand %></p>
-      <p class="text-gray-600"><%= order.bike.year %></p>
-      <p class="text-gray-600"><%= order.bike.color %></p>
+      <p class="text-gray-600">Type: <%= order.bike.bike_type %></p>
+      <p class="text-gray-600">Brand: <%= order.bike.brand %></p>
+      <p class="text-gray-600">Year: <%= order.bike.year %></p>
+      <p class="text-gray-600">Color: <%= order.bike.color %></p>
+      <p class="text-gray-600">Owner: <%= order.bike.user.email %></p>
+      <div class="text-center mb-4">
+        <%= link_to "Cancel this order", order_path(order),
+        class: "btn btn-outline-primary",
+        data: {
+          turbo_method: :delete, turbo_confirm: "Are you sure ?"
+          }
+        %>
+      </div>
     </div>
   <% end %>
-  <div class="mt-4">
-    <%= link_to "Back to Listings", root_path, class: "btn btn-secondary" %>
+  <div class="text-center mb-4">
+    <%= link_to "Back to Listings", root_path, class: "btn btn-outline-primary" %>
   </div>
 </div>
