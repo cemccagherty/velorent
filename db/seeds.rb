@@ -38,7 +38,7 @@ puts "Creating orders"
   Order.create!(
     user: user,
     bike: Bike.all.sample,
-    status: [true, false].sample,
+    status: ["created", "pending", "confirmed"].sample,
     rental_date: Date.today + rand(1..30).days,
     rental_date_end: Date.today + rand(31..60).days
   )
@@ -57,7 +57,8 @@ user_two = User.create!(
     bike_type: bike_types.sample,
     year: rand(2015..2024),
     color: bike_colors.sample,
-    user: user_two
+    user: user_two,
+    price: 100
   )
 end
 

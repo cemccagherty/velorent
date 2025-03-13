@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   # resources :user
   resources :my_bikes, only: [:index]
+  resources :checkouts, only: [:show]
 
   resources :bikes, except: [:index] do
     resources :orders, only: [:create]

@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = @user
     @order.bike = @bike
+    @order.status = false
     if @order.save
       redirect_to orders_path
     else
