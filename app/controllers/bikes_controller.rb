@@ -23,6 +23,12 @@ class BikesController < ApplicationController
     end
   end
 
+  def destroy
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to my_bikes_path, status: :see_other
+  end
+
   private
 
   def bike_params
