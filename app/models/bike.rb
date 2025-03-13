@@ -5,4 +5,11 @@ class Bike < ApplicationRecord
 
   validates :bike_type, :brand, :year, :color, presence: true
   validates :year, length: { is: 4 }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_bike_type_and_brand,
+                  against: [ :bike_type, :brand ],
+                  using: {
+  tsearch: { prefix: true } # <-- now `superman batm` will return something!
+  }
 end
