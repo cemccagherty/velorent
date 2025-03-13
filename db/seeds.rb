@@ -59,7 +59,8 @@ end
     bike_type: bike_types.sample,
     year: rand(2015..2024),
     color: bike_colors.sample,
-    user: user_two
+    user: user_two,
+    price: 100
   )
 end
 
