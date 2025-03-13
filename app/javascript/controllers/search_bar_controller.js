@@ -6,10 +6,7 @@ export default class extends Controller {
 
 
   connect() {
-    console.log("hello")
+    // console.log("hello")
   }
 
-  refresh() {
-    this.searchTarget.innerHtml = "<%= render \"bikeslist\" %>"
-  }
 }

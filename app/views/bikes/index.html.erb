@@ -1,29 +1,4 @@
 <h2 class="mb-4 text-center">Refurbiked</h2>
 
 <%= render "searchbar" %>
-
-<<<<<<< HEAD
-<div data-controller="search-bar">
-  <div data-search-bar-target="search">
-    <%= render "bikeslist" %>
-=======
-<div class="container">
-  <div class="row">
-    <% @bikes.each do |bike| %>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-        <img src="https://www.canyon.com/dw/image/v2/BCML_PRD/on/demandware.static/-/Sites-canyon-master/default/dw855963ab/images/full/full_2023_/2023/full_2023_3444_lux-trail-cf-9_P01_P5.png?sw=1064&sh=599&sm=fit&sfrm=png" class="card-img-top p-3 rounded" alt="Bike Image">
-          <div class="card-body">
-            <h2 class="h5 font-weight-bold"><%= bike.brand %> (<%= bike.year %>)</h2>
-            <p class="text-muted"><strong>Type:</strong> <%= bike.bike_type %></p>
-            <p class="text-muted"><strong>Color:</strong> <%= bike.color %></p>
-            <p class="text-muted"><strong>Price per day:</strong> $<%= bike.price %></p>
-
-            <%= link_to "View Details", bike_path(bike), class: "btn btn-primary mt-3" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
->>>>>>> master
-  </div>
-</div>
+<%= render "bikeslist" %>
