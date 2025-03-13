@@ -4,6 +4,7 @@
   <% @orders.each do |order| %>
     <div class="p-4 border rounded-lg shadow-lg bg-white m-2">
       <h2 class="text-xl font-bold"><%= link_to order.rental_date, bike_path(order.bike) %></h2>
+      <p class="text-gray-600">Rent ends at: <%= order.rental_date_end %></p>
       <p class="text-gray-600">Type: <%= order.bike.bike_type %></p>
       <p class="text-gray-600">Brand: <%= order.bike.brand %></p>
       <p class="text-gray-600">Year: <%= order.bike.year %></p>

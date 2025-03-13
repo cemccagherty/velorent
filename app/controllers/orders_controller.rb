@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order.user = @user
     @order.bike = @bike
     if @order.save
-      redirect_to root_path
+      redirect_to orders_path
     else
       redirect_to bikes_path(@bike), status: :unprocessable_entity
     end
@@ -30,6 +30,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:rental_date)
+    params.require(:order).permit(:rental_date, :rental_date_end)
   end
 end

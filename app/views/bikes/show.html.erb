@@ -4,8 +4,19 @@
 <%= @bike.color %>
 
 <%= simple_form_for [@bike, @order] do |f| %>
-  <%= f.input :rental_date %>
-  <%= f.submit "Borrow now!" %>
+  <div class="btn btn-primary">
+    <%= f.input :rental_date,
+                as: :string,
+                input_html: { data: { controller: "datepicker"}}
+    %>
+  </div>
+  <div class="btn btn-primary">
+    <%= f.input :rental_date_end,
+                as: :string,
+                input_html: { data: { controller: "datepicker"}}
+    %>
+  </div>
+    <%= f.submit "Borrow now!" %>
 <% end %>
 
 <%# Back to Listings Button %>
