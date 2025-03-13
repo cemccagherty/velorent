@@ -5,7 +5,13 @@ class BikesController < ApplicationController
   end
 
   def index
-    @bikes = Bike.all
+    if params[:query].present?
+      @bikes = Bike.search_by_bike_type_and_brand(params[:query])
+    else
+      @bikes = Bike.all
+    end
+    # raise
+
   end
 
   def show
