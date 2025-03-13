@@ -14,7 +14,7 @@
             <p class="text-muted"><strong>Bike added:</strong> <%= bike.created_at %></p>
             <ul><strong>Bookings:</strong>
               <% orders.each do |order| %>
-                <li><p>Booked by: <%= order.user.email %></p> <p>For rental on: <%= order.rental_date %></p></li>
+                <li><p>Booked by: <%= order.user.email %></p> <p>From: <%= order.rental_date %></p> <p>To: <%= order.rental_date_end %></p></li>
               <% end %>
             </ul>
             <%= link_to "Delete bike", bike_path(bike), class:"btn btn-outline-danger",
