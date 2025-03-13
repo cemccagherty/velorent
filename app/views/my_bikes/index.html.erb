@@ -11,6 +11,7 @@
             <h2 class="h5 font-weight-bold"><%= bike.brand %> (<%= bike.year %>)</h2>
             <p class="text-muted"><strong>Type:</strong> <%= bike.bike_type %></p>
             <p class="text-muted"><strong>Color:</strong> <%= bike.color %></p>
+            <p class="text-muted"><strong>Price per day:</strong> $<%= bike.price %></p>
             <p class="text-muted"><strong>Bike added:</strong> <%= bike.created_at %></p>
             <ul><strong>Bookings:</strong>
               <% orders.each do |order| %>
@@ -37,6 +38,7 @@
               <%= f.input :brand %>
               <%= f.input :year %>
               <%= f.input :color %>
+              <%= f.input :price %>
               <%= f.submit "Add bike" %>
             <% end %>
           </div>
