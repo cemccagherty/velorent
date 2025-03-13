@@ -7,13 +7,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Order.destroy_all
-Bike.destroy_all
 User.destroy_all
+Bike.destroy_all
+Order.destroy_all
 puts "User created"
 user = User.create!(
   email: "user@test.com",
-  password: "123456"
+  password: "123456",
+  username: "testuser" # Add username field
+)
+
+user_two = User.create!(
+  email: "second_user@test.com",
+  password: "keklmao",
+  username: "secondtestuser" # Add username field
 )
 
 bike_brands = ["Trek", "Giant", "Cannondale", "Specialized", "Bianchi", "Merida", "Scott", "Canyon"]
@@ -28,7 +35,8 @@ puts "creating bikes"
     bike_type: bike_types.sample,
     year: rand(2015..2024),
     color: bike_colors.sample,
-    user: user
+    user: user,
+    price: 100
   )
 end
 
@@ -44,18 +52,14 @@ end
 
 #    ---- second user ----
 
-user_two = User.create!(
-  email: "second_user@test.com",
-  password: "keklmao"
-)
-
 10.times do
   Bike.create!(
     brand: bike_brands.sample,
     bike_type: bike_types.sample,
     year: rand(2015..2024),
     color: bike_colors.sample,
-    user: user_two
+    user: user_two,
+    price: 100
   )
 end
 
