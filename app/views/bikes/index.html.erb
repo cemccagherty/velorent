@@ -12,6 +12,7 @@
             <h2 class="h5 font-weight-bold"><%= bike.brand %> (<%= bike.year %>)</h2>
             <p class="text-muted"><strong>Type:</strong> <%= bike.bike_type %></p>
             <p class="text-muted"><strong>Color:</strong> <%= bike.color %></p>
+            <p class="text-muted"><strong>Price per day:</strong> $<%= bike.price %></p>
 
             <%= link_to "View Details", bike_path(bike), class: "btn btn-primary mt-3" %>
           </div>

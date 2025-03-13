@@ -28,7 +28,8 @@ puts "creating bikes"
     bike_type: bike_types.sample,
     year: rand(2015..2024),
     color: bike_colors.sample,
-    user: user
+    user: user,
+    price: 100
   )
 end
 
