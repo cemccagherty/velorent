@@ -32,6 +32,7 @@
           <div class="card-body">
             <p><strong>Add a bike</strong></p>
             <%= simple_form_for @bike do |f| %>
+              <%= f.input :photo, as: :file %>
               <%= f.input :bike_type %>
               <%= f.input :brand %>
               <%= f.input :year %>
