@@ -38,8 +38,7 @@ puts "Creating orders"
     user: user,
     bike: Bike.all.sample,
     status: [true, false].sample,
-    rental_date: Date.today + rand(1..30).days,
-    rental_date_end: Date.today + rand(31..60).days
+    rental_date: Date.today + rand(1..30).days
   )
 end
 
@@ -66,7 +65,6 @@ end
     user: user_two,
     bike: Bike.all.sample,
     status: [true, false].sample,
-    rental_date: Date.today + rand(1..30).days,
-    rental_date_end: Date.today + rand(31..120).days
+    rental_date: Date.today + rand(1..30).days
   )
 end
