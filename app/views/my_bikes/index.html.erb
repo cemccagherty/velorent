@@ -17,6 +17,12 @@
                 <li><p>Booked by: <%= order.user.email %></p> <p>For rental on: <%= order.rental_date %></p></li>
               <% end %>
             </ul>
+            <%= link_to "Delete bike", bike_path(bike), class:"btn btn-outline-danger",
+              data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure you want to delete this bike and all of the associated bookings?"
+              }
+            %>
           </div>
         </div>
       </div>
@@ -26,6 +32,7 @@
           <div class="card-body">
             <p><strong>Add a bike</strong></p>
             <%= simple_form_for @bike do |f| %>
+              <%= f.input :photo, as: :file %>
               <%= f.input :bike_type %>
               <%= f.input :brand %>
               <%= f.input :year %>

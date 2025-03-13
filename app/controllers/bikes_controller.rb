@@ -23,10 +23,16 @@ class BikesController < ApplicationController
     end
   end
 
+  def destroy
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to my_bikes_path, status: :see_other
+  end
+
   private
 
   def bike_params
-    params.require(:bike).permit(:bike_type, :brand, :year, :color)
+    params.require(:bike).permit(:photo, :bike_type, :brand, :year, :color)
   end
 
   def set_bikes
