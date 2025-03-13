@@ -25,7 +25,8 @@ class BikesController < ApplicationController
     if @bike.save
       redirect_to my_bikes_path
     else
-      redirect_to my_bikes_path, status: :unprocessable_entity
+      @bikes = Bike.where(user: current_user)
+      render "my_bikes/index", status: :unprocessable_entity
     end
   end
 
