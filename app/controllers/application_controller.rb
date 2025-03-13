@@ -5,12 +5,8 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
-  end
-
-  def find_for_database_authentication(conditions)
-    login = conditions.delete(:login)
-    where(conditions).where(["email = :value OR username = :value", { value: login }]).first
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :login])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :login])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:login])
   end
 end
