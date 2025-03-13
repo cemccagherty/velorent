@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+
 ActiveRecord::Schema[7.1].define(version: 2025_03_13_110632) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,9 +50,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_110632) do
     t.string "brand"
     t.integer "year"
     t.string "color"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
@@ -60,6 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_110632) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "rental_date"
+    t.date "rental_date_end"
     t.index ["bike_id"], name: "index_orders_on_bike_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
