@@ -2,7 +2,7 @@
 <div class="col-md-4 mb-4">
         <div class="card-sl">
           <div class="card-image">
-            <%= cl_image_tag @order.bike.photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_path @order.bike.photo.key, height: 300, width: 400, crop: :fill %>
           </div>
 
           <h3>Booking details:</h3>
