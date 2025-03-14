@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  has_one_attached :photo
 
   # Custom method to authenticate via either username or email
   def self.find_for_database_authentication(warden_conditions)
