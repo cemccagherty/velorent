@@ -3,23 +3,24 @@ class OrdersController < ApplicationController
     @orders = Order.where(user: current_user)
   end
 
-
-  def show
-
-  end
-
   def create
     @bike = Bike.find(params[:bike_id])
     @user = current_user
     @order = Order.new(order_params)
     @order.user = @user
     @order.bike = @bike
-    @order.status = false
+    @order.status = "created"
     if @order.save
-      redirect_to orders_path
+      redirect_to checkout_path(@order)
     else
       redirect_to bikes_path(@bike), status: :unprocessable_entity
     end
+  end
+
+  def set_pending
+    @order = Order.find(params[:id])
+    @order.status = "pending" # this line doesnt work
+    redirect_to orders_path
   end
 
   def destroy
