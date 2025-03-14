@@ -34,6 +34,7 @@ user_two.photo.attach(io: user_two_photo_file, filename: "pogacar.png", content_
 user_two.save
 
 users = [user_one, user_two]
+london_areas = ['Camden', 'Hackney', 'Kensington', 'Islington', 'Southwark', 'Westminster', 'Lambeth', 'Shoreditch', 'Brixton']
 
 puts "creating bikes"
 
@@ -43,13 +44,13 @@ bike = Bike.new(
   year: rand(2015..2024),
   color: "Blue",
   user: users.sample,
-  price: rand(15..150)
+  price: rand(15..150),
+  area: london_areas.sample
 )
 bike_photo_file = URI.parse("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf50UYjZ7G_pXbBVLLkrVLl-o1MXwmQcsdXw&s").open
 bike.photo.attach(io: bike_photo_file, filename: "bike_1.png", content_type: "image/png")
 bike.save!
 
-london_areas = ['Camden', 'Hackney', 'Kensington', 'Islington', 'Southwark', 'Westminster', 'Lambeth', 'Shoreditch', 'Brixton']
 
 puts "creating bikes"
 
@@ -195,18 +196,6 @@ bike = Bike.new(
 bike_photo_file = URI.parse("https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2023/8/31/qphhgy9bftjopzxhlrdt/canyon-endurance-bike-23").open
 bike.photo.attach(io: bike_photo_file, filename: "bike_12.png", content_type: "image/png")
 bike.save!
-
-10.times do
-  Bike.create!(
-    brand: bike_brands.sample,
-    bike_type: bike_types.sample,
-    year: rand(2015..2024),
-    color: bike_colors.sample,
-    user: user_two,
-    price: 100,
-    area: london_areas.sample
-  )
-end
 
 bike = Bike.new(
   brand: "Canyon",
