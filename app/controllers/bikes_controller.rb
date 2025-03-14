@@ -1,18 +1,15 @@
 class BikesController < ApplicationController
-
   # before_action :set_bikes, only: []
   def home
   end
 
   def index
-    if params[:query].present?
-      @bikes = Bike.search_by_bike_type_and_brand(params[:query])
-    else
-      @bikes = Bike.all
-    end
-    # raise
+    @bikes = Bike.all
 
+    @bikes = @bikes.search_by_bike_type_and_brand(params[:query]) if params[:query].present?
+    @bikes = @bikes.where(area: params[:area]) if params[:area].present?
   end
+  # raise
 
   def show
     @bike = Bike.find(params[:id])
