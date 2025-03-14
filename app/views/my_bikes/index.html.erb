@@ -46,22 +46,53 @@
         </div>
       </div>
     <% end %>
-    <div class="col-md-4 mb-4">
+
+    <div class="row justify-content-center my-5">
+      <div class="col-md-8">
         <div class="card shadow-sm">
           <div class="card-body">
-            <p><strong>Add a bike</strong></p>
-            <%= simple_form_for @bike do |f| %>
-              <%= f.input :photo, as: :file %>
-              <%= f.input :bike_type %>
-              <%= f.input :brand %>
-              <%= f.input :year %>
-              <%= f.input :color %>
-              <%= f.input :price %>
-              <%= f.submit "Add bike" %>
+            <h3 class="card-title text-center mb-4">Add a New Bike</h3>
+
+            <%= simple_form_for @bike, html: { multipart: true } do |f| %>
+              <%= f.input :photo, as: :file, required: true, label: "Bike Photo" %>
+
+              <%= f.input :bike_type,
+                          label: "Bike Type",
+                          required: true,
+                          placeholder: "e.g., Mountain, Road, Electric" %>
+
+              <%= f.input :brand,
+                          label: "Brand",
+                          required: true,
+                          placeholder: "e.g., Trek, Specialized" %>
+
+              <%= f.input :year,
+                          label: "Year",
+                          required: true,
+                          placeholder: "e.g., 2021",
+                          input_html: { min: 1980, max: Date.today.year, step: 1 } %>
+
+              <%= f.input :color,
+                          label: "Color",
+                          required: true,
+                          placeholder: "e.g., Red, Blue, Black" %>
+
+              <%= f.input :price,
+                          label: "Price per day ($)",
+                          required: true,
+                          placeholder: "e.g., 25",
+                          input_html: { min: 1, step: 0.01 } %>
+
+              <%= f.input :area,
+                          collection: ['Camden', 'Hackney', 'Kensington', 'Islington', 'Southwark', 'Westminster', 'Lambeth', 'Shoreditch', 'Brixton'] %>
+
+              <%= f.button :submit, "Add Bike", class: "btn btn-primary btn-block mt-3" %>
             <% end %>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
   </div>
 
