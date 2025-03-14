@@ -6,6 +6,13 @@
             class: "form-control",
             placeholder: "Type a keyword"
         %>
+
+      <%= select_tag :area,
+            options_for_select(Bike::LONDON_AREAS, params[:area]),
+            prompt: "Select Area",
+            class: "form-control mx-2"
+        %>
+
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>

@@ -1,0 +1,40 @@
+<%= simple_form_for @bike do |f| %>
+  <div class="form-group">
+    <%= f.input :brand, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :bike_type, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :year, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :color, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :price, required: true %>
+  </div>
+
+  <!-- 🔥 New Location Dropdown -->
+  <div class="form-group">
+    <%= f.label :location, "Location" %>
+    <%= f.select :area, [
+    ['Camden', 'Camden'],
+    ['Islington', 'Islington'],
+    ['Hackney', 'Hackney'],
+    ['Westminster', 'Westminster'],
+    ['Kensington', 'Kensington'],
+    ['Greenwich', 'Greenwich'],
+    ['Brixton', 'Brixton'],
+    ['Shoreditch', 'Shoreditch'],
+    ['Hammersmith', 'Hammersmith'],
+    ['Stratford', 'Stratford']
+  ], prompt: "Select an area", class: "form-control" %>
+  </div>
+
+  <%= f.submit "Save Bike", class: "btn btn-primary" %>
+<% end %>

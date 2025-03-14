@@ -26,17 +26,20 @@ user_two = User.create!(
 bike_brands = ["Trek", "Giant", "Cannondale", "Specialized", "Bianchi", "Merida", "Scott", "Canyon"]
 bike_types = ["Road", "Mountain", "Hybrid", "Electric", "BMX", "Gravel", "Folding"]
 bike_colors = ["Red", "Blue", "Black", "Green", "White", "Yellow", "Orange", "Purple"]
+london_areas = ['Camden', 'Hackney', 'Kensington', 'Islington', 'Southwark', 'Westminster', 'Lambeth', 'Shoreditch', 'Brixton']
 
 puts "creating bikes"
 
 10.times do
+
   Bike.create!(
     brand: bike_brands.sample,
     bike_type: bike_types.sample,
     year: rand(2015..2024),
     color: bike_colors.sample,
-    user: user,
-    price: 100
+    user: user_two,
+    price: 100,
+    area: london_areas.sample  # Added this line
   )
 end
 
@@ -60,7 +63,8 @@ end
     year: rand(2015..2024),
     color: bike_colors.sample,
     user: user_two,
-    price: 100
+    price: 100,
+    area: london_areas.sample
   )
 end
 
