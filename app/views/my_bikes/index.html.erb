@@ -57,6 +57,7 @@
               <%= f.input :year %>
               <%= f.input :color %>
               <%= f.input :price %>
+              <%= f.input :area, collection: ['Camden', 'Hackney', 'Kensington', 'Islington', 'Southwark', 'Westminster', 'Lambeth', 'Shoreditch', 'Brixton'] %>
               <%= f.submit "Add bike" %>
             <% end %>
           </div>

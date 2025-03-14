@@ -25,6 +25,7 @@ class BikesController < ApplicationController
       @bikes = Bike.where(user: current_user)
       render "my_bikes/index", status: :unprocessable_entity
     end
+    raise
   end
 
   def destroy
@@ -36,7 +37,7 @@ class BikesController < ApplicationController
   private
 
   def bike_params
-    params.require(:bike).permit(:photo, :bike_type, :brand, :year, :color, :price)
+    params.require(:bike).permit(:photo, :bike_type, :brand, :year, :color, :price, :area)
   end
 
   def set_bikes

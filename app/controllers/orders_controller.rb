@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
     @order.user = @user
     @order.bike = @bike
     @order.status = "created"
-
     if @order.save
       redirect_to checkout_path(@order)
     else
