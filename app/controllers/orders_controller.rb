@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = @user
     @order.bike = @bike
-
     @order.status = "created"
 
     if @order.save
@@ -21,8 +20,23 @@ class OrdersController < ApplicationController
 
   def set_pending
     @order = Order.find(params[:id])
-    @order.status = "pending" # this line doesnt work
+    @order.status = "pending"
+    @order.save!
     redirect_to orders_path
+  end
+
+  def set_confirmed
+    @order = Order.find(params[:id])
+    @order.status = "confirmed"
+    @order.save!
+    redirect_to my_bikes_path
+  end
+
+  def set_rejected
+    @order = Order.find(params[:id])
+    @order.status = "rejected"
+    @order.save!
+    redirect_to my_bikes_path
   end
 
   def destroy

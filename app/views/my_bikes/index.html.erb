@@ -13,11 +13,29 @@
             <p class="text-muted"><strong>Color:</strong> <%= bike.color %></p>
             <p class="text-muted"><strong>Price per day:</strong> $<%= bike.price %></p>
             <p class="text-muted"><strong>Bike added:</strong> <%= bike.created_at %></p>
-            <ul><strong>Bookings:</strong>
+            <ul><strong>Confirmed bookings:</strong>
               <% orders.each do |order| %>
-                <li><p>Booked by: <%= order.user.email %></p> <p>From: <%= order.rental_date %></p> <p>To: <%= order.rental_date_end %></p></li>
+                <% if order.status == "confirmed" %>
+                  <li>
+                    <p>Booked by: <%= order.user.email %></p>
+                    <p>From: <%= order.rental_date %></p>
+                    <p>To: <%= order.rental_date_end %></p>
+                  </li>
+                <% end %>
               <% end %>
             </ul>
+            <ul><strong>Pending bookings:</strong>
+              <% orders.each do |order| %>
+                <% if order.status == "pending" %>
+                  <li>
+                    <p>Requested by: <%= order.user.email %></p>
+                    <p>From: <%= order.rental_date %></p>
+                    <p>To: <%= order.rental_date_end %></p>
+                    <%= link_to "Accept booking", set_confirmed_path(order), data: { turbo_method: :patch } %>
+                    <%= link_to "Reject booking", set_rejected_path(order), data: { turbo_method: :patch } %>
+                  </li>
+                <% end %>
+              <% end %>
             <%= link_to "Delete bike", bike_path(bike), class:"btn btn-outline-danger",
               data: {
                 turbo_method: :delete,
