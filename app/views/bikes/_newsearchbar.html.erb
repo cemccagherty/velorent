@@ -1,21 +1,29 @@
 
 
 <div class="container">
-  <div class="search">
+  <div class="search rounded-pill bg-gradient">
     <div class="row">
       <div class="col-md-12">
-        <div class="search-1">
+        <div class="search-1 bg-gradient p-2 rounded-pill">
           <i class='bx bx-search-alt'></i>
-          <div class="col-md-9">
-            <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-              <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: "Type a keyword"
-                %>
+
+          <div class="row justify-content-center rounded-pill">
+            <div class="col-sm-12 m-3">
+              <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+                <%= text_field_tag :query,
+                      params[:query],
+                      class: "form-control rounded-pill",
+                      placeholder: "Type a keyword"
+                  %>
+            <div class="col-sm-3">
+              <%= submit_tag "Search", name: "", class: "card-button rounded-pill text-center" %>
+            </div>
+              <% end %>
+            </div>
           </div>
-              <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-            <% end %>
+
+
+
         </div>
       </div>
     </div>
