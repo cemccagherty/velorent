@@ -1,12 +1,27 @@
-<h3>Booking details:</h3>
-<p><strong>Type:</strong> <%= @order.bike.bike_type %></p>
-<p><strong>Brand:</strong> <%= @order.bike.brand %></p>
-<p><strong>Year:</strong> <%= @order.bike.year %></p>
-<p><strong>Color:</strong> <%= @order.bike.color %></p>
-<p><strong>Owner:</strong> <%= @order.bike.user.email %></p>
-<p><strong>Start date:</strong> <%= @order.rental_date %></p>
-<p><strong>End date:</strong> <%= @order.rental_date_end %></p>
-<p><strong>Price per day: </strong>$<%= @order.bike.price %></p>
-<p><strong>Total Price: </strong>$ <%= @order.bike.price * ((@order.rental_date_end - @order.rental_date).to_i + 1) %></p>
 
-<%= link_to "Confirm booking", set_pending_path(@order), data: { turbo_method: :patch } %>
+<div class="col-md-4 mb-4">
+        <div class="card-sl">
+          <div class="card-image">
+            <%= cl_image_tag @order.bike.photo.key, height: 300, width: 400, crop: :fill %>
+          </div>
+
+          <h3>Booking details:</h3>
+          <p><strong>Type:</strong> <%= @order.bike.bike_type %></p>
+          <p><strong>Brand:</strong> <%= @order.bike.brand %></p>
+          <p><strong>Year:</strong> <%= @order.bike.year %></p>
+          <p><strong>Color:</strong> <%= @order.bike.color %></p>
+          <p><strong>Owner:</strong> <%= @order.bike.user.email %></p>
+          <p><strong>Start date:</strong> <%= @order.rental_date %></p>
+          <p><strong>End date:</strong> <%= @order.rental_date_end %></p>
+          <p><strong>Price per day: </strong>$<%= @order.bike.price %></p>
+          <p><strong>Total Price: </strong>$ <%= @order.bike.price * ((@order.rental_date_end - @order.rental_date).to_i + 1) %></p>
+
+          <%= link_to "Confirm booking", set_pending_path(@order), class:"btn btn-primary", data: { turbo_method: :patch } %>
+          <%= link_to "Cancel booking", order_path(@order), class:"btn btn-outline-danger",
+                        data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure you want to delete this bike and all of the associated bookings?"
+                        }%>
+
+        </div>
+      </div>
