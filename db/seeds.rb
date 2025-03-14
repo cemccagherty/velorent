@@ -7,9 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-User.destroy_all
-Bike.destroy_all
 Order.destroy_all
+Bike.destroy_all
+User.destroy_all
 puts "User created"
 user = User.create!(
   email: "user@test.com",
@@ -48,8 +48,6 @@ puts "Creating orders"
     status: ["created", "pending", "confirmed"].sample,
     rental_date: Date.today + rand(1..30).days,
     rental_date_end: Date.today + rand(31..60).days
-
-
   )
 end
 
@@ -72,6 +70,7 @@ end
     user: user_two,
     bike: Bike.all.sample,
     status: [true, false].sample,
-    rental_date: Date.today + rand(1..30).days
+    rental_date: Date.today + rand(1..30).days,
+    rental_date_end: Date.today + rand(31..60).days
   )
 end
