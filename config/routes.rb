@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   # resources :user
-  get "orders/:id", to: "orders#set_pending", as: :set_pending
+  patch "orders/:id/pending", to: "orders#set_pending", as: :set_pending
+  patch "orders/:id/confirm", to: "orders#set_confirmed", as: :set_confirmed
+  patch "orders/:id/reject", to: "orders#set_rejected", as: :set_rejected
+
+
   resources :my_bikes, only: [:index]
   resources :checkouts, only: [:show]
 

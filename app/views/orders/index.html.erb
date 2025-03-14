@@ -14,6 +14,7 @@
       <p class="text-gray-600">Year: <%= order.bike.year %></p>
       <p class="text-gray-600">Color: <%= order.bike.color %></p>
       <p class="text-gray-600">Owner: <%= order.bike.user.email %></p>
+      <p class="text-gray-600">Order Status: <%= order.status %></p>
       <div class="text-center mb-4">
         <%= link_to "Cancel this order", order_path(order),
         class: "btn btn-outline-primary",

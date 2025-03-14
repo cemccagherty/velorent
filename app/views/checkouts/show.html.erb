@@ -9,4 +9,4 @@
 <p><strong>Price per day: </strong>$<%= @order.bike.price %></p>
 <p><strong>Total Price: </strong>$ <%= @order.bike.price * ((@order.rental_date_end - @order.rental_date).to_i + 1) %></p>
 
-<%= link_to "Confirm booking", set_pending_path(@order) %>
+<%= link_to "Confirm booking", set_pending_path(@order), data: { turbo_method: :patch } %>
