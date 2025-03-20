@@ -1,0 +1,68 @@
+
+<div class="container" style="margin-top:50px;">
+  <div class="row">
+
+    <% @bikes.each do |bike| %>
+      <% orders = Order.where(bike_id: bike) %>
+
+      <% @bikes.each do |bike| %>
+        <div class="col-md-4 mb-4">
+          <div class="card-sl">
+            <div class="card-image">
+              <%= cl_image_tag bike.photo.key, height: 300, width: 400, crop: :fill %>
+            </div>
+
+            <div class="card-heading">
+              <%= bike.brand %> (<%= bike.year %>)
+            </div>
+
+            <div class="container">
+            <div class="card-text">
+              <strong>Type:</strong> <%= bike.bike_type %>
+              <strong>Color:</strong> <%= bike.color %>
+              <strong>Price per day:</strong> <%= bike.price %>
+              <strong>Bike added:</strong> <%= bike.created_at %>
+            </div>
+
+            <div class="card-text">
+            <ul><strong>Confirmed bookings:</strong>
+
+              <% orders.each do |order| %>
+                  <% if order.status == "confirmed" %>
+                    <li>
+                      <p>Booked by: <%= order.user.email %></p>
+                      <p>From: <%= order.rental_date %></p>
+                      <p>To: <%= order.rental_date_end %></p>
+                    </li>
+                  <% end %>
+              <% end %>
+            </ul>
+            <ul><strong>Pending bookings:</strong>
+              <% orders.each do |order| %>
+                  <% if order.status == "pending" %>
+                    <li>
+                      <p>Requested by: <%= order.user.email %></p>
+                      <p>From: <%= order.rental_date %></p>
+                      <p>To: <%= order.rental_date_end %></p>
+                      <%= link_to "Accept booking", set_confirmed_path(order), data: { turbo_method: :patch } %>
+                      <%= link_to "Reject booking", set_rejected_path(order), data: { turbo_method: :patch } %>
+                    </li>
+                  <% end %>
+              <% end %>
+            </ul>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
