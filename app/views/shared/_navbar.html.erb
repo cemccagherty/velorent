@@ -24,7 +24,9 @@
       <% if user_signed_in? %>
         <div class="dropdown">
           <a href="#" class="nav-link d-flex align-items-center" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if current_user.photo.present? %>
             <%= cl_image_tag current_user.photo.key, class: "rounded-circle border", alt: "User Avatar", width: 40, height: 40 %>
+          <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
