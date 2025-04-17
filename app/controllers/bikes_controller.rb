@@ -11,6 +11,13 @@ class BikesController < ApplicationController
   end
   # raise
 
+  def biketest
+    @bikes = Bike.all
+
+    @bikes = @bikes.search_by_bike_type_and_brand(params[:query]) if params[:query].present?
+    @bikes = @bikes.where(area: params[:area]) if params[:area].present?
+  end
+
   def show
     @bike = Bike.find(params[:id])
     @order = Order.new
